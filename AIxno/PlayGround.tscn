@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Square/Square.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/PlayGround/PlayGround.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/PlayGround/CurrentPlayerLabel.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Themes/PlayGround.tres" type="Theme" id=4]
+[ext_resource path="res://Scripts/WinnerLabel.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Play Again.gd" type="Script" id=6]
+
+[node name="PlayGround" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 46, 53 )
+far = 6958.6
+
+[node name="Squares" type="Node" parent="."]
+
+[node name="Square" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -27 )
+
+[node name="Square2" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -27 )
+
+[node name="Square3" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0299, 0, -26.8118 )
+
+[node name="Square4" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0 )
+
+[node name="Square5" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="Square6" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 0 )
+
+[node name="Square7" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 27 )
+
+[node name="Square8" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 27 )
+
+[node name="Square9" parent="Squares" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 27 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CurrentPlayerLabel" type="RichTextLabel" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -179.0
+margin_right = 223.0
+margin_bottom = 71.0
+theme = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="WinnerRect" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.713726 )
+
+[node name="WinnerScreen" type="CenterContainer" parent="UI/WinnerRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Winner container" type="VBoxContainer" parent="UI/WinnerRect/WinnerScreen"]
+margin_left = 262.0
+margin_top = 230.0
+margin_right = 762.0
+margin_bottom = 369.0
+
+[node name="WinnerLabel" type="RichTextLabel" parent="UI/WinnerRect/WinnerScreen/Winner container"]
+margin_right = 500.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 500, 100 )
+theme = ExtResource( 4 )
+text = "asdfsadf"
+script = ExtResource( 5 )
+
+[node name="Play Again" type="Button" parent="UI/WinnerRect/WinnerScreen/Winner container"]
+margin_top = 104.0
+margin_right = 500.0
+margin_bottom = 139.0
+theme = ExtResource( 4 )
+text = "Joaca din nou"
+script = ExtResource( 6 )
+
+[node name="DrawRect" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.713726 )
+
+[node name="WinnerScreen" type="CenterContainer" parent="UI/DrawRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Winner container" type="VBoxContainer" parent="UI/DrawRect/WinnerScreen"]
+margin_left = 262.0
+margin_top = 230.0
+margin_right = 762.0
+margin_bottom = 369.0
+
+[node name="WinnerLabel" type="RichTextLabel" parent="UI/DrawRect/WinnerScreen/Winner container"]
+margin_right = 500.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 500, 100 )
+theme = ExtResource( 4 )
+text = "Egalitate"
+
+[node name="Play Again2" type="Button" parent="UI/DrawRect/WinnerScreen/Winner container"]
+margin_top = 104.0
+margin_right = 500.0
+margin_bottom = 139.0
+theme = ExtResource( 4 )
+text = "Joaca din nou"
+script = ExtResource( 6 )
+
+[connection signal="pressed" from="UI/WinnerRect/WinnerScreen/Winner container/Play Again" to="UI/WinnerRect/WinnerScreen/Winner container/Play Again" method="_on_Play_Again_pressed"]
+[connection signal="pressed" from="UI/DrawRect/WinnerScreen/Winner container/Play Again2" to="UI/DrawRect/WinnerScreen/Winner container/Play Again2" method="_on_Play_Again_pressed"]

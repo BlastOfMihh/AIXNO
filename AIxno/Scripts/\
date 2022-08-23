@@ -1,0 +1,47 @@
+extends Spatial
+
+
+onready var squares:=($Squares).get_children()
+onready var board=[
+	[squares[0], squares[1], squares[2]],
+	[squares[3], squares[4], squares[5]],
+	[squares[6], squares[7], squares[8]]
+]
+var winner:=-1
+
+func _ready():
+	for square in squares:
+		square.connect("input_event", )
+
+	pass # Replace with function body.
+
+# 0 1 2
+# 3 4 5
+# 6 7 8
+
+func check_winner()->int:
+	if (board[0][0].type!=-1 and board[0][0].type==board[1][1].type and board[1][1].type==board[2][2].type): return int(Globals.turn)
+	if (board[0][2].type!=-1 and board[0][2].type==board[1][1].type and board[1][1].type==board[2][0].type): return int(Globals.turn)
+
+	if (board[0][0].type!=-1 and board[0][0].type==board[1][0].type and board[1][0].type==board[1][0].type): return int(Globals.turn)
+	if (board[0][1].type!=-1 and board[0][1].type==board[1][1].type and board[1][1].type==board[1][1].type): return int(Globals.turn)
+	if (board[0][2].type!=-1 and board[0][2].type==board[1][2].type and board[1][2].type==board[1][2].type): return int(Globals.turn)
+
+	if (board[0][0].type!=-1 and board[0][0].type==board[0][1].type and board[0][1].type==board[0][2].type): return int(Globals.turn)
+	if (board[1][0].type!=-1 and board[1][0].type==board[1][1].type and board[1][1].type==board[1][2].type): return int(Globals.turn)
+	if (board[2][0].type!=-1 and board[2][0].type==board[2][1].type and board[2][1].type==board[2][2].type): return int(Globals.turn)
+	return -1
+
+func _process(_delta):
+	if winner==-1:
+		# if Globals.turn
+		match check_winner():
+			0:
+				print("x wins")
+				winner=1
+				pass
+			1: #x wins
+				print("0 wins")
+				winner=0
+				pass
+
