@@ -8,6 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Board",
+"language": "GDScript",
+"path": "res://Scripts/MiniMax/board.gd"
+}, {
+"base": "Resource",
+"class": "GameSaver",
+"language": "GDScript",
+"path": "res://Scripts/GameSaver.gd"
+}, {
+"base": "Reference",
+"class": "MMNode",
+"language": "GDScript",
+"path": "res://Scripts/MiniMax/node.gd"
+}, {
+"base": "Reference",
+"class": "MiniMax",
+"language": "GDScript",
+"path": "res://Scripts/MiniMax/minimax.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"GameSaver": "",
+"MMNode": "",
+"MiniMax": ""
+}
+
 [application]
 
 config/name="AIxno"

@@ -1,6 +1,6 @@
 extends Area
 
-var type:=-1
+var type:=Globals.NOONE
 onready var x_an:=$X/Animations
 onready var o_an:=$O/Animations
 
@@ -9,17 +9,17 @@ signal clicked
 func _ready():
 	pass
 
-func activate():
-	type=int(Globals.turn)
-	if type:
+func activate(player_type):
+	if player_type==Globals.BLACK:
 		x_an.play("Enter")
+		Globals.turn=Globals.WHITE
 	else:
 		o_an.play("Enter")
+		Globals.turn=Globals.BLACK
+	type=player_type
 	$CollisionShape.queue_free()
-	Globals.turn=!Globals.turn
 
 func _on_Square_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		emit_signal("clicked", self)
 		# activate()
-	pass # Replace with function body.

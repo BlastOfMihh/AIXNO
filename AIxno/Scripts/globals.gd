@@ -1,3 +1,8 @@
 extends Node
 
-var turn:=false
+
+enum {NOONE, WHITE, BLACK , BOTH}
+const O=WHITE
+const X=BLACK
+
+var turn:=WHITE
