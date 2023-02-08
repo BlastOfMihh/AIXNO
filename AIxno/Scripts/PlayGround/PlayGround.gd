@@ -18,6 +18,7 @@ var winner:=Globals.NOONE
 var occupied:=0
 
 func _ready():
+  
 	for square in squares:
 		square.connect("clicked", self, "_handle_player_moves")
 	minimax.setup_tree();

@@ -6,3 +6,4 @@ const O=WHITE
 const X=BLACK
 
 var turn:=WHITE
+
